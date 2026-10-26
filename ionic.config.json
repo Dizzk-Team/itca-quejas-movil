@@ -1,0 +1,7 @@
+{
+  "name": "itca-quejas-movil",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
