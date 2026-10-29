@@ -1,25 +1,133 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mis reportes</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Peliculas Populares</ion-title>
-    </ion-toolbar>
-  </ion-header>
-<ion-list>
-  <ion-item *ngFor="let estudiante of estudiante()">
-    <label>
-        <h2>{{ estudiante.nombre }}</h2>
-        <p>{{ estudiante.apellido }}</p>
-        <p>{{ estudiante.carnet }}</p>
-        </label>
-  </ion-item>
-</ion-list>
-</ion-content>
+<ion-content [fullscreen]="true" class="ion-padding page-container">
+  <!-- Cabecera de la sección -->
+  <ion-grid>
+    <h6>Mantenimiento Institucional</h6>
+    <h1>Tus reportes, al día</h1>
+    <p class="subtitle">Consulta el avance de tus solicitudes</p>
+  </ion-grid>
 
+  <!-- Contador y filtro -->
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <h6>4 reportes</h6>
+      </ion-col>
+      <ion-col size="6">
+        <h6>Mas recientes primero</h6>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Tarjeta de contenido -->
+  <ion-card class="report-card">
+    <div class="card-body-flex">
+      <!-- Imagen del reporte -->
+      <div class="card-image-container">
+        <img
+          src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=300&q=80"
+          alt="Fuga de agua"
+        />
+      </div>
+
+      <!-- Contenido de texto y estado -->
+      <div class="card-content-area">
+        <h2 class="report-title">Fuga de agua en lavabo</h2>
+        <p class="report-location">Edificio A · Baños, planta baja</p>
+        <p class="report-date">15 de octubre de 2026</p>
+
+        <!-- Badge o etiqueta de estado -->
+        <div class="status-badge pending">
+          <ion-icon name="time-outline"></ion-icon>
+          <span>Pendiente</span>
+        </div>
+      </div>
+    </div>
+  </ion-card>
+
+  <!-- Tarjeta de contenido -->
+  <ion-card class="report-card">
+    <div class="card-body-flex">
+      <!-- Imagen del reporte -->
+      <div class="card-image-container">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaZ2umM7CqO5u-8h3YcGLAji3OG_EXQSeqq5vrTUZxtvbbYqTibBmsBjk&s=10"
+          alt="Fuga de agua"
+        />
+      </div>
+
+      <!-- Contenido de texto y estado -->
+      <div class="card-content-area">
+        <h2 class="report-title">Luminaria sin funcionar</h2>
+        <p class="report-location">Edificio B · Aula 204</p>
+        <p class="report-date">29 de octubre de 2026</p>
+
+        <!-- Badge o etiqueta de estado -->
+        <div class="status-badge in-process">
+          <ion-icon name="build-outline"></ion-icon>
+          <span>En proceso</span>
+        </div>
+      </div>
+    </div>
+  </ion-card>
+
+  <!-- Tarjeta de contenido -->
+  <ion-card class="report-card">
+    <div class="card-body-flex">
+      <!-- Imagen del reporte -->
+      <div class="card-image-container">
+        <img
+          src="https://img.magnific.com/foto-gratis/grungy-puerta-madera-textura-fondo_1357-277.jpg?semt=ais_hybrid&w=740&q=80"
+          alt="Fuga de agua"
+        />
+      </div>
+
+      <!-- Contenido de texto y estado -->
+      <div class="card-content-area">
+        <h2 class="report-title">Cerradura dañada</h2>
+        <p class="report-location">Biblioteca · Sala de estudio</p>
+        <p class="report-date">15 de octubre de 2026</p>
+
+        <!-- Badge o etiqueta de estado -->
+        <div class="status-badge pending">
+          <ion-icon name="time-outline"></ion-icon>
+          <span>Pendiente</span>
+        </div>
+      </div>
+    </div>
+  </ion-card>
+
+  <!-- Tarjeta de contenido -->
+  <ion-card class="report-card">
+    <div class="card-body-flex">
+      <!-- Imagen del reporte -->
+      <div class="card-image-container">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuuEPDgH4DZ-iiHFfhRoIBotIScTg4_djvrUgxa5AhSLjSqq9VPKU08b9r&s=10"
+          alt="Fuga de agua"
+        />
+      </div>
+
+      <!-- Contenido de texto y estado -->
+      <div class="card-content-area">
+        <h2 class="report-title">Contacto electrico suelto</h2>
+        <p class="report-location">Edificio C · Aula C205</p>
+        <p class="report-date">15 de octubre de 2026</p>
+
+        <!-- Badge o etiqueta de estado -->
+        <div class="status-badge resolve">
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+          <span>Resuelto</span>
+        </div>
+      </div>
+    </div>
+  </ion-card>
+</ion-content>

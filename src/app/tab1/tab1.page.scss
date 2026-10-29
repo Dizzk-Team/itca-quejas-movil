@@ -1,0 +1,239 @@
+/* Fondo general de la página */
+.page-container {
+  --background: #f8fafc;
+}
+
+/* 1. Cabecera de la sección */
+ion-grid {
+  padding: 0 4px; /* Ajusta el padding lateral predeterminado de Ionic */
+  margin-bottom: 16px;
+
+  h6 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: #0847b3; /* Color primario o azul institucional */
+    margin: 0 0 4px 0;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b; /* Tono oscuro elegante */
+    margin: 0 0 6px 0;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    color: #64748b; /* Gris medio para el subtítulo */
+    margin: 0;
+  }
+}
+
+/* 2. Sección de Contador y Filtro */
+/* Usamos flexbox en la fila de Ionic para alinear un elemento a la izquierda y otro a la derecha */
+ion-row {
+  align-items: center;
+  margin-bottom: 8px;
+
+  /* Estilo del contador ("4 reportes") */
+  ion-col:first-child h6 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
+  /* Estilo del filtro ("Más recientes primero") alineado a la derecha */
+  ion-col:last-child h6 {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #64748b;
+    margin: 0;
+    text-align: right;
+    text-transform: none;
+    letter-spacing: normal;
+  }
+}
+
+/* 3. Estilo de la Tarjeta (Ya ajustado previamente) */
+.report-card {
+  margin: 0 0 16px 0;
+  border-radius: 16px;
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.05),
+    0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 12px;
+}
+
+.card-body-flex {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.card-image-container {
+  flex-shrink: 0;
+  width: 90px;
+  height: 90px;
+  border-radius: 12px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.card-content-area {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-grow: 1;
+}
+
+.report-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.report-location {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.report-date {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin: 0 0 6px 0;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  width: fit-content;
+
+  &.pending {
+    background-color: #fef3c7;
+    color: #b45309;
+
+    ion-icon {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+/* Estilo general de la tarjeta */
+.report-card {
+  margin: 16px;
+  border-radius: 16px;
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.05),
+    0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 12px;
+}
+
+/* Contenedor Flex para alinear la imagen a la izquierda y el texto a la derecha */
+.card-body-flex {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+/* Contenedor de la miniatura de la imagen */
+.card-image-container {
+  flex-shrink: 0;
+  width: 90px;
+  height: 90px;
+  border-radius: 12px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* Área de los textos */
+.card-content-area {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-grow: 1;
+}
+
+.report-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.report-location {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.report-date {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin: 0 0 6px 0;
+}
+
+/* Insignia de estado (Pendiente) */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  width: fit-content;
+
+  &.pending {
+    background-color: #fef3c7; /* Amarillo muy suave */
+    color: #b45309; /* Texto marrón/amarillo oscuro */
+
+    ion-icon {
+      font-size: 0.9rem;
+    }
+  }
+
+  &.resolve {
+    background-color: #6bf35c96; /* Amarillo muy suave */
+    color: #145701; /* Texto marrón/amarillo oscuro */
+
+    ion-icon {
+      font-size: 0.9rem;
+    }
+  }
+
+  &.in-process {
+    background-color: #0529f71f; /* Amarillo muy suave */
+    color: #1651c0; /* Texto marrón/amarillo oscuro */
+
+    ion-icon {
+      font-size: 0.9rem;
+    }
+  }
+}

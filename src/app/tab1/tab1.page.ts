@@ -1,10 +1,38 @@
-import { Component, OnInit,signal } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonThumbnail, IonLabel} from '@ionic/angular';
+import { Component, OnInit, signal } from '@angular/core';
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonList,
+  IonItem,
+  IonThumbnail,
+  IonLabel,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonGrid,
+  IonCol,
+  IonRow,
+  IonIcon,
+  IonButton,
+  IonButtons,
+  IonBackButton,
+} from '@ionic/angular';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { NgForOf } from '@angular/common';
 import axios from 'axios';
+import { addIcons } from 'ionicons';
+import {
+  arrowBackOutline,
+  buildOutline,
+  checkmarkCircleOutline,
+  construct,
+  timeOutline,
+} from 'ionicons/icons';
 
-interface estudiante{
+interface estudiante {
   id: number;
   nombre: string;
   apellido: string;
@@ -13,32 +41,54 @@ interface estudiante{
   edad: number;
   carrera: string;
   grupo: string;
-
 }
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, NgForOf],
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    NgForOf,
+    IonCard,
+    IonCardContent,
+    IonCardHeader,
+    IonCardSubtitle,
+    IonGrid,
+    IonCol,
+    IonRow,
+    IonIcon,
+    IonButtons,
+    IonBackButton,
+  ],
 })
-
-
 export class Tab1Page implements OnInit {
-  estudiante = signal<estudiante[]>([]);   
+  estudiante = signal<estudiante[]>([]);
 
-  ngOnInit(): void{
+  constructor() {
+    // Registras el icono para poder usarlo en tu HTML
+    addIcons({
+      timeOutline,
+      arrowBackOutline,
+      buildOutline,
+      checkmarkCircleOutline,
+    });
+  }
+
+  ngOnInit(): void {
     void this.obtenerEstudiantes();
   }
 
-  async obtenerEstudiantes(): Promise<void>{
-    try{
+  async obtenerEstudiantes(): Promise<void> {
+    try {
       const response = await axios.get<estudiante[]>(
-        'http://172.16.17.105:8000/api/estudiantes'
+        'http://172.16.17.105:8000/api/estudiantes',
       );
       this.estudiante.set(response.data);
-    }
-    catch (error) {
+    } catch (error) {
       console.error('Error', error);
     }
   }
