@@ -1,0 +1,163 @@
+// Estilos generales del contenido para darle un padding cómodo
+ion-content {
+  --background: #f8fafc;
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --padding-top: 16px;
+  --padding-bottom: 24px;
+}
+
+// Tipografías y títulos principales
+p {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin: 4px 0 16px 0;
+}
+
+p:first-of-type {
+  color: #2563eb;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+h3 {
+  color: #0f172a;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+// Estilos para las etiquetas de los selectores y campos
+ion-list {
+  background: transparent;
+  padding: 0;
+  margin-bottom: 16px;
+
+  ion-item {
+    --background: #ffffff;
+    --border-radius: 12px;
+    --border-color: #cbd5e1;
+    --highlight-color-focused: #2563eb;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-shadow: none;
+
+    ion-select {
+      font-weight: 500;
+      color: #1e293b;
+    }
+  }
+}
+
+// Cuadro de Descripción del Problema
+.custom-textarea-container {
+  margin-bottom: 20px;
+
+  .textarea-title {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 8px;
+  }
+
+  .textarea-box {
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 12px 14px;
+    transition: border-color 0.2s;
+
+    &:focus-within {
+      border-color: #2563eb;
+    }
+
+    textarea {
+      width: 100%;
+      border: none;
+      outline: none;
+      resize: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: #1e293b;
+      line-height: 1.4;
+
+      &::placeholder {
+        color: #94a3b8;
+      }
+    }
+
+    .char-counter {
+      text-align: right;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+  }
+}
+
+// Cuadro para Adjuntar Evidencia Fotográfica
+.upload-container {
+  margin-bottom: 24px;
+
+  .upload-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border: 2px dashed #93c5fd;
+    border-radius: 12px;
+    padding: 20px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background: #f1f5f9;
+    }
+
+    .upload-icon {
+      font-size: 1.8rem;
+      color: #2563eb;
+      margin-bottom: 8px;
+    }
+
+    .upload-text {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #2563eb;
+      margin-bottom: 4px;
+      width: 100%;
+    }
+
+    .upload-subtext {
+      display: block;
+      font-size: 0.75rem;
+      color: #64748b;
+      width: 100%;
+    }
+  }
+}
+
+// Botón de Enviar Reporte
+.submit-container {
+  margin-bottom: 12px;
+
+  .submit-btn {
+    --background: #1d4ed8;
+    --background-hover: #1e40af;
+    --border-radius: 12px;
+    --padding-top: 16px;
+    --padding-bottom: 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    box-shadow: 0 4px 6px -1px rgba(29, 78, 216, 0.2);
+  }
+}
