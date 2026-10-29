@@ -1,0 +1,198 @@
+/* Fondo general de la página */
+.page-container {
+  --background: #f8fafc;
+}
+
+/* 1. Cabecera de la sección */
+.header {
+  padding: 0 4px; /* Ajusta el padding lateral predeterminado de Ionic */
+  margin-bottom: 16px;
+
+  h6 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: #0847b3; /* Color primario o azul institucional */
+    margin: 0 0 4px 0;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b; /* Tono oscuro elegante */
+    margin: 0 0 6px 0;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    color: #64748b; /* Gris medio para el subtítulo */
+    margin: 0;
+  }
+}
+
+/* Filtro y contador */
+.filter-grid {
+  margin-bottom: 12px;
+
+  h6 {
+    color: #000000; /* Color primario */
+    margin: 0 0 4px 0;
+  }
+}
+
+.counter-text {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.custom-filter-item {
+  --background: transparent;
+  --padding-start: 0;
+  --padding-end: 0;
+  min-height: auto;
+  float: right;
+
+  ion-select {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3880ff;
+    padding: 0;
+  }
+}
+
+/* Estilo general de la Tarjeta del Muro */
+.community-card {
+  margin: 0 0 16px 0;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 16px;
+}
+
+/* Cabecera del usuario (Avatar + Nombre + Etiqueta) */
+.card-user-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+
+  .user-info-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #dbeafe;
+      color: #1d4ed8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    .user-texts {
+      h3 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin: 0;
+      }
+      p {
+        font-size: 0.75rem;
+        color: #94a3b8;
+        margin: 0;
+      }
+    }
+  }
+
+  .category-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #64748b;
+    background: #f1f5f9;
+    padding: 4px 8px;
+    border-radius: 6px;
+  }
+}
+
+/* Textos de la tarjeta (Título y Ubicación) */
+.card-body-text {
+  margin-bottom: 12px;
+
+  h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 4px 0;
+  }
+
+  .location-text {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    ion-icon {
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+  }
+}
+
+/* Imagen central de la tarjeta */
+.card-main-image {
+  width: 100%;
+  height: 180px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 14px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* Pie de tarjeta (Confirmaciones y botón de acción) */
+.card-footer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .confirmations-count {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: 500;
+
+    ion-icon {
+      font-size: 1rem;
+      color: #3880ff;
+    }
+  }
+
+  .confirm-btn {
+    --background: #eff6ff;
+    --color: #1d4ed8;
+    --border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: none;
+    box-shadow: none;
+    margin: 0;
+  }
+}
