@@ -1,17 +1,78 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Nuevo Reporte
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <P>MANTENIMIENTO INSTITUCIONAL</P>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <h3>¿Que necesita atencion?</h3>
+
+  <p>Indica el problema para que nuestro equipo pueda atenderlo</p>
+
+  <p>Categoria</p>
+
+  <ion-list>
+  <ion-item>
+    <ion-select
+      interface="popover"
+      expandedIcon="remove"
+      aria-label="fruit"
+      label-placement="floating" fill="outline"
+    >
+      <ion-select-option value="infra">Infraestructura</ion-select-option>
+      <ion-select-option value="equipo">Equipo</ion-select-option>
+      <ion-select-option value="limpieza">Limpieza</ion-select-option>
+    </ion-select>
+  </ion-item>
+  </ion-list>
+
+  <p>Ubicacion exacta</p>
+  <ion-list>
+  <ion-item>
+    <ion-select
+      interface="popover"
+      expandedIcon="remove"
+      aria-label="fruit"
+      label-placement="floating" fill="outline"
+    >
+      <ion-select-option value="baño">Baños</ion-select-option>
+      <ion-select-option value="cancha">cancha</ion-select-option>
+      <ion-select-option value="edificioC">edificio C</ion-select-option>
+    </ion-select>
+  </ion-item>
+  </ion-list>
+
+  <div class="custom-textarea-container">
+  <label class="textarea-title">Descripción del problema</label>
+  
+  <div class="textarea-box">
+    <textarea 
+      placeholder="Describe qué ocurre y desde cuándo. Incluye detalles que nos ayuden a ubicarlo." 
+      maxlength="500"
+      rows="4"
+    ></textarea>
+    <div class="char-counter">0 / 500</div>
+  </div>
+</div>
+
+<!-- Cuadro para adjuntar evidencia (Diseño personalizado con Ionic) -->
+<div class="upload-container">
+  <div class="upload-box">
+    <ion-icon name="camera-outline" class="upload-icon"></ion-icon>
+    <span class="upload-text">Adjuntar evidencia fotográfica</span>
+    <span class="upload-subtext">Opcional - Hasta 3 fotos de 10 MB</span>
+  </div>
+</div>
+
+<!-- Botón de Enviar Reporte (Usando ion-button de Ionic) -->
+<div class="submit-container">
+  <ion-button expand="block" class="submit-btn">
+    Enviar Reporte 
+    <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+  </ion-button>
+</div>
 </ion-content>
