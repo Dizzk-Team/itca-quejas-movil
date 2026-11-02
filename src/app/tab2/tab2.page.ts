@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButton } from '@ionic/angular';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButton, IonInput } from '@ionic/angular';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { IonItem, IonList, IonSelect, IonSelectOption, IonTextarea } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +13,7 @@ import { addIcons } from 'ionicons';
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, ExploreContainerComponent, IonItem, IonList, IonSelect, IonSelectOption, CommonModule, IonItem, IonTextarea, FormsModule, IonIcon
-    ,IonButton
+    ,IonButton, IonInput
   ]
 })
 export class Tab2Page {
