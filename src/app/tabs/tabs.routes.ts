@@ -1,7 +1,12 @@
 import { Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { LoginPage } from '../login/login.page';
 
 export const routes: Routes = [
+  {
+        path: 'login',
+        loadComponent: () =>
+          import('../login/login.page').then((m) => m.LoginPage),},
   {
     path: 'tabs',
     component: TabsPage,
@@ -30,7 +35,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
 ];
