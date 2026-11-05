@@ -1,0 +1,170 @@
+/* Fondo general crema/beige suave de la pantalla */
+.login-background {
+  --background: #f4ecdf; 
+}
+
+/* Contenedor flexible para centrar la tarjeta */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  padding: 20px;
+}
+
+/* Tarjeta principal contenedora con bordes redondeados y sombra */
+.login-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 440px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Banner superior rojo/burdeos institucional */
+.login-header-banner {
+  background-color: #990000; 
+  padding: 30px 20px;
+  text-align: center;
+  color: #ffffff;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
+  .logo-box {
+    background: #ffffff;
+    width: 120px;
+    height: 50px;
+    margin: 0 auto 15px auto;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+
+    img {
+      max-height: 35px;
+      object-fit: contain;
+    }
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  p {
+    margin: 5px 0 0 0;
+    font-size: 13px;
+    color: #f0f0f0;
+  }
+}
+
+/* Cuerpo interior del formulario */
+.login-body {
+  padding: 30px 35px;
+
+  .form-title {
+    text-align: center;
+    color: #990000;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 25px;
+  }
+}
+
+/* Estilos de los inputs */
+.input-group {
+  position: relative;
+  margin-bottom: 18px;
+
+  .input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    opacity: 0.6;
+  }
+
+  .eye-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 16px;
+    opacity: 0.6;
+  }
+
+  input {
+    width: 100%;
+    padding: 13px 15px 13px 42px;
+    background-color: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333333;
+    outline: none;
+    transition: border-color 0.2s;
+
+    &::placeholder {
+      color: #999999;
+    }
+
+    &:focus {
+      border-color: #990000;
+    }
+  }
+}
+
+/* Mensaje de error */
+.error-text {
+  color: #990000;
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+/* Botón de ingresar institucional */
+.btn-submit {
+  --background: #990000;
+  --background-hover: #800000;
+  --color: #ffffff;
+  --border-radius: 6px;
+  font-weight: 600;
+  height: 46px;
+  margin-top: 22px;
+  text-transform: none;
+  font-size: 15px;
+  box-shadow: 0 4px 12px rgba(153, 0, 0, 0.25);
+}
+
+/* Enlace inferior de registro */
+.register-footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 13px;
+  color: #666666;
+
+  a {
+    color: #cca652; /* Tono dorado/amarillo sutil de la referencia */
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.auth-message {
+  text-align: center;
+  p {
+    color: #444444;
+    margin-bottom: 20px;
+  }
+}
