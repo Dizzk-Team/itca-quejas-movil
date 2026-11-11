@@ -7,11 +7,6 @@ export interface Quejas {
   ubicacion_exacta: string;
   descripcion: string;
   evidencias_url: string;
-  estado: string;
-  prioridad: string;
-  asignado_a: string;
-  confirmaciones_usuarios: string;
-  fechas: string;
 }
 
 export class ApiError extends Error {
@@ -48,6 +43,10 @@ export class QuejasApiService {
 
   list(): Promise<Quejas[]> {
     return this.request<Quejas[]>('/reportes', 'GET');
+  }
+
+  create(categoria: string, ubicacion_exacta: string, descripcion: string, evidencias_url:string): Promise<Quejas> {
+    return this.request<Quejas>('/reportes', 'POST', {categoria, ubicacion_exacta, descripcion, evidencias_url});
   }
 
   private async request<T>(
