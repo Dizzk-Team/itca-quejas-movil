@@ -15,7 +15,7 @@ p {
 }
 
 p:first-of-type {
-  color: #2563eb;
+  color: #ca1919;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -47,6 +47,12 @@ ion-list {
     box-shadow: none;
 
     ion-select {
+      font-weight: 500;
+      color: #1e293b;
+    }
+
+    // Se agrega esto para que el ion-input mantenga la misma tipografía y color
+    ion-input {
       font-weight: 500;
       color: #1e293b;
     }
@@ -124,7 +130,7 @@ ion-list {
 
     .upload-icon {
       font-size: 1.8rem;
-      color: #2563eb;
+      color: #eb2525;
       margin-bottom: 8px;
     }
 
@@ -132,7 +138,7 @@ ion-list {
       display: block;
       font-size: 0.9rem;
       font-weight: 600;
-      color: #2563eb;
+      color: #eb2525;
       margin-bottom: 4px;
       width: 100%;
     }
@@ -151,13 +157,13 @@ ion-list {
   margin-bottom: 12px;
 
   .submit-btn {
-    --background: #1d4ed8;
+    --background: #d81d1d;
     --background-hover: #1e40af;
     --border-radius: 12px;
     --padding-top: 16px;
     --padding-bottom: 16px;
     font-size: 0.95rem;
     font-weight: 600;
-    box-shadow: 0 4px 6px -1px rgba(29, 78, 216, 0.2);
+    box-shadow: 0 4px 6px -1px rgba(246, 247, 248, 0.2);
   }
 }

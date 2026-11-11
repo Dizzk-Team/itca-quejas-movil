@@ -1,0 +1,66 @@
+<ion-content class="login-background">
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-header-banner">
+        <div class="logo-box">
+          <img
+            src="assets/icon/Itca1.png"
+            alt="ITCA FEPADE"
+            onerror="this.src = 'assets/shapes.svg'"
+          />
+        </div>
+        <h2>ITCA FEPADE</h2>
+      </div>
+
+      <div class="login-body">
+        <h3 class="form-title">Iniciar sesión</h3>
+
+        @if (authenticated) {
+        <div class="auth-message">
+          <p>Ya tienes una sesión iniciada.</p>
+          <ion-button expand="block" fill="outline" (click)="logout()"
+            >Cerrar sesión</ion-button
+          >
+        </div>
+        } @else {
+        <form (ngSubmit)="login()">
+          <div class="input-group">
+            <input
+              type="email"
+              name="correo_institucional"
+              [(ngModel)]="correo_institucional"
+              placeholder="Correo electrónico"
+              [disabled]="loading"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <input
+              type="password"
+              name="password"
+              [(ngModel)]="password"
+              placeholder="Contraseña"
+              [disabled]="loading"
+              required
+            />
+          </div>
+
+          @if (error) {
+          <p class="error-text">{{ error }}</p>
+          }
+
+          <ion-button
+            expand="block"
+            type="submit"
+            class="btn-submit"
+            [disabled]="loading || !correo_institucional.trim() || !password"
+          >
+            {{ loading ? 'Ingresando...' : 'Ingresar' }}
+          </ion-button>
+        </form>
+        }
+      </div>
+    </div>
+  </div>
+</ion-content>

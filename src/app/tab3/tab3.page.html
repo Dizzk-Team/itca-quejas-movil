@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+      <ion-back-button defaultHref="/tabs/tab2"></ion-back-button>
     </ion-buttons>
     <ion-title>Mis reportes</ion-title>
   </ion-toolbar>
@@ -40,91 +40,76 @@
     </ion-row>
   </ion-grid>
 
-  <!-- Tarjeta de reporte 1 -->
-  <ion-card class="community-card">
-    <!-- Cabecera de la tarjeta: Autor y Categoría -->
+  <div *ngIf="loading" class="feed-message" role="status">
+    Cargando reportes de la comunidad...
+  </div>
+
+  <div *ngIf="error && !loading" class="feed-message feed-error" role="alert">
+    <p>{{ error }}</p>
+    <ion-button fill="clear" (click)="loadReportes()">Reintentar</ion-button>
+  </div>
+
+  <div *ngIf="!loading && !error && reportesVisibles.length === 0" class="feed-message">
+    Aún no hay reportes para mostrar.
+  </div>
+
+  <ion-card
+    *ngFor="let reporte of reportesVisibles"
+    class="community-card"
+  >
     <div class="card-user-header">
       <div class="user-info-group">
-        <div class="avatar ml">ML</div>
+        <div class="avatar">{{ getIniciales(reporte) }}</div>
         <div class="user-texts">
-          <h3>Mariana López</h3>
-          <p>Hace 25 min</p>
+          <h3>{{ getNombreCreador(reporte) }}</h3>
+          <p>{{ getFechaRelativa(reporte) }}</p>
         </div>
       </div>
-      <span class="category-tag">Infraestructura</span>
+      <span class="category-tag">{{ reporte.categoria }}</span>
     </div>
 
-    <!-- Título y ubicación -->
     <div class="card-body-text">
-      <h2>Fuga de agua en lavabo</h2>
+      <h2>{{ reporte.descripcion }}</h2>
       <p class="location-text">
         <ion-icon name="location-sharp"></ion-icon>
-        Edificio A · Baños, planta baja
+        {{ reporte.ubicacion_exacta }}
       </p>
     </div>
 
-    <!-- Imagen grande central -->
-    <div class="card-main-image">
-      <img
-        src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80"
-        alt="Fuga de agua"
-      />
+    <div *ngIf="reporte.evidencias_url?.[0] as imagen" class="card-main-image">
+      <img [src]="imagen" alt="Evidencia del reporte" />
     </div>
 
-    <!-- Pie de tarjeta: Confirmaciones y Botón -->
     <div class="card-footer-actions">
       <div class="confirmations-count">
         <ion-icon name="people-outline"></ion-icon>
-        <span>18 personas confirman este problema</span>
+        <span>
+          {{ reporte.confirmaciones_usuarios?.length ?? 0 }}
+          {{ (reporte.confirmaciones_usuarios?.length ?? 0) === 1 ? 'persona confirma' : 'personas confirman' }}
+          este problema
+        </span>
       </div>
-      <ion-button expand="block" fill="solid" class="confirm-btn">
-        <ion-icon slot="start" name="arrow-up-circle-outline"></ion-icon>
-        Yo también confirmo esto
+      <ion-button
+        expand="block"
+        fill="solid"
+        class="confirm-btn"
+        [disabled]="!reporte.id || isConfirming(reporte) || isConfirmedByCurrentUser(reporte)"
+        (click)="confirmarReporte(reporte)"
+      >
+        <ion-icon
+          slot="start"
+          [name]="isConfirmedByCurrentUser(reporte) ? 'checkmark-circle-outline' : 'arrow-up-circle-outline'"
+        ></ion-icon>
+        {{ isConfirming(reporte) ? 'Enviando...' : isConfirmedByCurrentUser(reporte) ? 'Ya confirmaste esto' : 'Yo también confirmo esto' }}
       </ion-button>
-    </div>
-  </ion-card>
-
-  <!-- Tarjeta de reporte 2 -->
-  <ion-card class="community-card">
-    <!-- Cabecera de la tarjeta: Autor y Categoría -->
-    <div class="card-user-header">
-      <div class="user-info-group">
-        <div class="avatar ml">AA</div>
-        <div class="user-texts">
-          <h3>Alvaro Aceituno</h3>
-          <p>Hace 1 días</p>
-        </div>
-      </div>
-      <span class="category-tag">Infraestructura</span>
-    </div>
-
-    <!-- Título y ubicación -->
-    <div class="card-body-text">
-      <h2>No hay jabon</h2>
-      <p class="location-text">
-        <ion-icon name="location-sharp"></ion-icon>
-        Edificio C · Baños, planta baja
+      <p
+        *ngIf="getConfirmationMessage(reporte)"
+        class="confirmation-message"
+        [class.confirmation-error]="isConfirmationError(reporte)"
+        role="status"
+      >
+        {{ getConfirmationMessage(reporte) }}
       </p>
-    </div>
-
-    <!-- Imagen grande central -->
-    <div class="card-main-image">
-      <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbJBY58JjGYCSFCLJoLEnnjPoZ9kEfvM1qxiMiva_FdNOjbbH2Vdb6Zfs&s=10"
-        alt="Fuga de agua"
-      />
-    </div>
-
-    <!-- Pie de tarjeta: Confirmaciones y Botón -->
-    <div class="card-footer-actions">
-      <div class="confirmations-count">
-        <ion-icon name="people-outline"></ion-icon>
-        <span>35 personas confirman este problema</span>
-      </div>
-      <ion-button expand="block" fill="solid" class="confirm-btn">
-        <ion-icon slot="start" name="arrow-up-circle-outline"></ion-icon>
-        Yo también confirmo esto
-      </ion-button>
     </div>
   </ion-card>
 </ion-content>

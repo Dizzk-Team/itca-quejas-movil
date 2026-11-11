@@ -12,7 +12,7 @@
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.8px;
-    color: #0847b3; /* Color primario o azul institucional */
+    color: #d11414; /* Color primario o azul institucional */
     margin: 0 0 4px 0;
     text-transform: uppercase;
   }
@@ -40,6 +40,20 @@
     color: #000000; /* Color primario */
     margin: 0 0 4px 0;
   }
+}
+
+.feed-message {
+  margin: 24px 8px;
+  color: #64748b;
+  text-align: center;
+
+  p {
+    margin-bottom: 8px;
+  }
+}
+
+.feed-error {
+  color: #b91c1c;
 }
 
 .counter-text {
@@ -194,5 +208,16 @@
     text-transform: none;
     box-shadow: none;
     margin: 0;
+  }
+
+  .confirmation-message {
+    margin: -4px 0 0;
+    color: #15803d;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .confirmation-error {
+    color: #b91c1c;
   }
 }
