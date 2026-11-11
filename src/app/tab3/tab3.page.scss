@@ -42,6 +42,20 @@
   }
 }
 
+.feed-message {
+  margin: 24px 8px;
+  color: #64748b;
+  text-align: center;
+
+  p {
+    margin-bottom: 8px;
+  }
+}
+
+.feed-error {
+  color: #b91c1c;
+}
+
 .counter-text {
   font-size: 0.9rem;
   font-weight: 700;
@@ -194,5 +208,16 @@
     text-transform: none;
     box-shadow: none;
     margin: 0;
+  }
+
+  .confirmation-message {
+    margin: -4px 0 0;
+    color: #15803d;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .confirmation-error {
+    color: #b91c1c;
   }
 }

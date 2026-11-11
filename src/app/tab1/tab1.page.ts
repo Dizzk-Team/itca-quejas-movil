@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
@@ -22,7 +22,6 @@ import {
 } from '@ionic/angular';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { NgForOf } from '@angular/common';
-import axios from 'axios';
 import { addIcons } from 'ionicons';
 import {
   arrowBackOutline,
@@ -31,17 +30,6 @@ import {
   construct,
   timeOutline,
 } from 'ionicons/icons';
-
-interface estudiante {
-  id: number;
-  nombre: string;
-  apellido: string;
-  carnet: string;
-  correo: string;
-  edad: number;
-  carrera: string;
-  grupo: string;
-}
 
 @Component({
   selector: 'app-tab1',
@@ -65,9 +53,7 @@ interface estudiante {
     IonBackButton,
   ],
 })
-export class Tab1Page implements OnInit {
-  estudiante = signal<estudiante[]>([]);
-
+export class Tab1Page {
   constructor() {
     // Registras el icono para poder usarlo en tu HTML
     addIcons({
@@ -78,18 +64,4 @@ export class Tab1Page implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    void this.obtenerEstudiantes();
-  }
-
-  async obtenerEstudiantes(): Promise<void> {
-    try {
-      const response = await axios.get<estudiante[]>(
-        'http://172.16.17.105:8000/api/estudiantes',
-      );
-      this.estudiante.set(response.data);
-    } catch (error) {
-      console.error('Error', error);
-    }
-  }
 }

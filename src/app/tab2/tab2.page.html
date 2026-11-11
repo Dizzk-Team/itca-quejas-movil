@@ -24,9 +24,9 @@
           name="categoria"
           [(ngModel)]="categoria"
         >
-          <ion-select-option value="infra">Infraestructura</ion-select-option>
-          <ion-select-option value="equipo">Equipo</ion-select-option>
-          <ion-select-option value="limpieza">Limpieza</ion-select-option>
+          <ion-select-option value="Infraestructura">Infraestructura</ion-select-option>
+          <ion-select-option value="Equipo">Equipo</ion-select-option>
+          <ion-select-option value="Limpieza">Limpieza</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-list>
@@ -65,6 +65,7 @@
           name="descripcion"
           [(ngModel)]="descripcion"
           placeholder="Describe qué ocurre y desde cuándo. Incluye detalles que nos ayuden a ubicarlo." 
+          minlength="10"
           maxlength="500"
           rows="4"
         ></textarea>
@@ -93,7 +94,7 @@
       >
         <ion-icon name="camera-outline" class="upload-icon" style="font-size: 36px; color: var(--ion-color-primary);"></ion-icon>
         <div class="upload-text" style="font-weight: 500; margin-top: 5px;">Adjuntar evidencia fotográfica</div>
-        <div class="upload-subtext" style="font-size: 12px; color: gray;">Opcional - Hasta 1 foto de 10 MB (Seleccionar archivo o tomar foto)</div>
+        <div class="upload-subtext" style="font-size: 12px; color: gray;">Opcional - Hasta 1 foto de 5 MB (Seleccionar archivo o tomar foto)</div>
       </div>
 
       <!-- Si SÍ hay imagen seleccionada, mostramos la vista previa -->
