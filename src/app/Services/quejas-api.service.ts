@@ -11,9 +11,12 @@ export interface Reporte {
   fechas?: {
     reporte?: string;
   };
+  prioridad?: string | null;
+  asignado_a?: string | null;
   categoria: string;
   ubicacion_exacta: string;
   descripcion: string;
+  estado?: 'Pendiente' | 'En proceso' | 'Resuelto' | string;
   evidencias_url?: string[];
   confirmaciones_usuarios?: string[];
 }

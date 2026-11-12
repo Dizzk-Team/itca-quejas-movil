@@ -1,131 +1,88 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
-    </ion-buttons>
     <ion-title>Mis reportes</ion-title>
+    <ion-buttons slot="end">
+      <ion-button aria-label="Cerrar sesión" (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding page-container">
+  <!-- Saludo -->
+  <div class="hello">
+    <div class="avatar">{{ getIniciales() }}</div>
+    <div class="hello-text">
+      <strong>Hola{{ getPrimerNombre() ? ', ' + getPrimerNombre() : '' }}</strong>
+      <span>Estos son los reportes que has enviado</span>
+    </div>
+  </div>
+
   <!-- Cabecera de la sección -->
-  <ion-grid>
+  <div class="header">
     <h6>Mantenimiento Institucional</h6>
     <h1>Tus reportes, al día</h1>
-    <p class="subtitle">Consulta el avance de tus solicitudes</p>
-  </ion-grid>
+  </div>
 
-  <!-- Contador y filtro -->
-  <ion-grid>
-    <ion-row>
-      <ion-col size="6">
-        <h6>4 reportes</h6>
-      </ion-col>
-      <ion-col size="6">
-        <h6>Mas recientes primero</h6>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <!-- Resumen por estado -->
+  <div class="summary">
+    <div class="sum pending"><b>{{ contar('pending') }}</b><span>Pendientes</span></div>
+    <div class="sum in-process"><b>{{ contar('in-process') }}</b><span>En proceso</span></div>
+    <div class="sum resolve"><b>{{ contar('resolve') }}</b><span>Resueltos</span></div>
+  </div>
 
-  <!-- Tarjeta de contenido -->
-  <ion-card class="report-card">
+  <div class="list-head">
+    <strong>{{ reportes.length }} {{ reportes.length === 1 ? 'reporte' : 'reportes' }}</strong>
+    <span>Más recientes primero</span>
+  </div>
+
+  <div *ngIf="loading" class="feed-message" role="status">
+    Cargando tus reportes...
+  </div>
+
+  <div *ngIf="error && !loading" class="feed-message feed-error" role="alert">
+    <p>{{ error }}</p>
+    <ion-button fill="clear" (click)="loadMisReportes()">Reintentar</ion-button>
+  </div>
+
+  <div *ngIf="!loading && !error && reportes.length === 0" class="feed-message">
+    Aún no has enviado reportes. Usa «Nuevo Reporte» para crear el primero.
+  </div>
+
+  <!-- Tarjeta de reporte -->
+  <ion-card *ngFor="let reporte of reportes" class="report-card">
     <div class="card-body-flex">
-      <!-- Imagen del reporte -->
       <div class="card-image-container">
         <img
-          src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=300&q=80"
-          alt="Fuga de agua"
+          *ngIf="reporte.evidencias_url?.[0] as imagen; else sinFoto"
+          [src]="imagen"
+          alt="Evidencia del reporte"
         />
+        <ng-template #sinFoto>
+          <div class="no-photo"><ion-icon name="camera-outline"></ion-icon></div>
+        </ng-template>
       </div>
 
-      <!-- Contenido de texto y estado -->
       <div class="card-content-area">
-        <h2 class="report-title">Fuga de agua en lavabo</h2>
-        <p class="report-location">Edificio A · Baños, planta baja</p>
-        <p class="report-date">15 de octubre de 2026</p>
-
-        <!-- Badge o etiqueta de estado -->
-        <div class="status-badge pending">
-          <ion-icon name="time-outline"></ion-icon>
-          <span>Pendiente</span>
+        <div class="top-line">
+          <span class="category-tag">{{ reporte.categoria }}</span>
+          <div class="status-badge" [ngClass]="getEstado(reporte)">
+            <ion-icon [name]="getEstadoIcono(reporte)"></ion-icon>
+            <span>{{ getEstadoTexto(reporte) }}</span>
+          </div>
         </div>
-      </div>
-    </div>
-  </ion-card>
-
-  <!-- Tarjeta de contenido -->
-  <ion-card class="report-card">
-    <div class="card-body-flex">
-      <!-- Imagen del reporte -->
-      <div class="card-image-container">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaZ2umM7CqO5u-8h3YcGLAji3OG_EXQSeqq5vrTUZxtvbbYqTibBmsBjk&s=10"
-          alt="Fuga de agua"
-        />
-      </div>
-
-      <!-- Contenido de texto y estado -->
-      <div class="card-content-area">
-        <h2 class="report-title">Luminaria sin funcionar</h2>
-        <p class="report-location">Edificio B · Aula 204</p>
-        <p class="report-date">29 de octubre de 2026</p>
-
-        <!-- Badge o etiqueta de estado -->
-        <div class="status-badge in-process">
-          <ion-icon name="build-outline"></ion-icon>
-          <span>En proceso</span>
-        </div>
-      </div>
-    </div>
-  </ion-card>
-
-  <!-- Tarjeta de contenido -->
-  <ion-card class="report-card">
-    <div class="card-body-flex">
-      <!-- Imagen del reporte -->
-      <div class="card-image-container">
-        <img
-          src="https://img.magnific.com/foto-gratis/grungy-puerta-madera-textura-fondo_1357-277.jpg?semt=ais_hybrid&w=740&q=80"
-          alt="Fuga de agua"
-        />
-      </div>
-
-      <!-- Contenido de texto y estado -->
-      <div class="card-content-area">
-        <h2 class="report-title">Cerradura dañada</h2>
-        <p class="report-location">Biblioteca · Sala de estudio</p>
-        <p class="report-date">15 de octubre de 2026</p>
-
-        <!-- Badge o etiqueta de estado -->
-        <div class="status-badge pending">
-          <ion-icon name="time-outline"></ion-icon>
-          <span>Pendiente</span>
-        </div>
-      </div>
-    </div>
-  </ion-card>
-
-  <!-- Tarjeta de contenido -->
-  <ion-card class="report-card">
-    <div class="card-body-flex">
-      <!-- Imagen del reporte -->
-      <div class="card-image-container">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuuEPDgH4DZ-iiHFfhRoIBotIScTg4_djvrUgxa5AhSLjSqq9VPKU08b9r&s=10"
-          alt="Fuga de agua"
-        />
-      </div>
-
-      <!-- Contenido de texto y estado -->
-      <div class="card-content-area">
-        <h2 class="report-title">Contacto electrico suelto</h2>
-        <p class="report-location">Edificio C · Aula C205</p>
-        <p class="report-date">15 de octubre de 2026</p>
-
-        <!-- Badge o etiqueta de estado -->
-        <div class="status-badge resolve">
-          <ion-icon name="checkmark-circle-outline"></ion-icon>
-          <span>Resuelto</span>
+        <h2 class="report-title">{{ reporte.descripcion }}</h2>
+        <p class="report-location">
+          <ion-icon name="location-sharp"></ion-icon>
+          {{ reporte.ubicacion_exacta }}
+        </p>
+        <div class="bottom-line">
+          <span class="report-date">{{ getFecha(reporte) }}</span>
+          <span class="confirms">
+            <ion-icon name="people-outline"></ion-icon>
+            {{ reporte.confirmaciones_usuarios?.length ?? 0 }}
+          </span>
         </div>
       </div>
     </div>
