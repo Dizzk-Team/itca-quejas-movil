@@ -1,0 +1,59 @@
+/* register.page.scss */
+
+ion-content {
+  /* Color de fondo crema suave[cite: 6] */
+  --background: #f2efe9;
+}
+
+.ion-padding-bottom {
+  /* Color rojo oscuro para el texto principal[cite: 6] */
+  h2 {
+    color: #990000;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  p {
+    color: #555;
+  }
+}
+
+ion-list {
+  background: transparent;
+  padding: 0;
+  margin-top: 10px;
+}
+
+ion-item {
+  /* Estilo de los inputs tipo caja redondeada con borde[cite: 6] */
+  --background: #ffffff;
+  --border-radius: 8px;
+  --border-color: #dcdcdc;
+  --border-width: 1px;
+  --border-style: solid;
+  --padding-start: 15px;
+  --inner-padding-end: 15px;
+  margin-bottom: 15px;
+  box-shadow: none;
+
+  ion-input {
+    /* Color de texto del placeholder y label[cite: 6] */
+    --color: #333;
+    --placeholder-color: #999;
+  }
+}
+
+ion-button {
+  /* Botón con estilo rojo apagado/rosado oscuro y bordes redondeados[cite: 6] */
+  --background: #d02c26;
+  --background-hover: #b56a68;
+  --background-activated: #a45a58;
+  --color: #ffffff;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  height: 48px;
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: none; /* Evita que el texto esté todo en mayúsculas */
+}

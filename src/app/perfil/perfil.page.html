@@ -1,17 +1,3 @@
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">perfil</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">perfil</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Mi Perfil</ion-title>
@@ -29,6 +15,17 @@
 
     <p><strong>{{usuarioPerfil.identificador_carnet}}</strong></p>
     <p>{{ usuarioPerfil.correo_institucional}}</p>
+
+    <ion-button
+      fill="outline"
+      shape="round"
+      size="small"
+      class="ion-margin-top"
+      (click)="abrirEdicion()"
+    >
+      <ion-icon slot="start" name="create-outline"></ion-icon>
+      Editar Nombre
+    </ion-button>
   </div>
 
   <!-- Opciones adicionales (Opcional, pero da un aspecto más completo) -->

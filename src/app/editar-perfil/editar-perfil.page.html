@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- El defaultHref asegura que siempre haya a dónde volver si se recarga la app -->
+      <ion-back-button
+        defaultHref="/tabs/perfil"
+        text="Volver"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="ion-padding-bottom ion-text-center">
+    <h2>Actualizar Nombre</h2>
+    <p>Ingresa cómo deseas que aparezca tu nombre en el sistema.</p>
+  </div>
+  @if (usuarioPerfil) {
+  <ion-list>
+    <ion-item>
+      <ion-input
+        name="nombre"
+        label="{{usuarioPerfil.nombre_completo}}"
+        labelPlacement="floating"
+        [(ngModel)]="perfilData.nombre_completo"
+        type="text"
+        placeholder="Ej. Juan Pérez"
+      >
+      </ion-input>
+    </ion-item>
+  </ion-list>
+  }
+  <ion-button
+    expand="block"
+    class="ion-margin-top btn-guardar"
+    (click)="actualizarNombre()"
+    [disabled]="cargando"
+  >
+    {{ cargando ? 'Actualizando...' : 'Guardar Nombre' }}
+  </ion-button>
+</ion-content>
