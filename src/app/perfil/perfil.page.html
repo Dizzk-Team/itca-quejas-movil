@@ -1,0 +1,92 @@
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">perfil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content>
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">perfil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Mi Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding profile-page">
+  <div class="profile-intro">
+    <span class="eyebrow">TU CUENTA</span>
+    <h1>Tu perfil</h1>
+    <p>Administra tu información y encuentra ayuda cuando la necesites.</p>
+  </div>
+
+  @if (cargando) {
+    <div class="profile-loading" role="status">Cargando tu perfil...</div>
+  } @else if (usuarioPerfil) {
+    <section class="profile-hero">
+      <div class="avatar-large">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </div>
+      <span class="account-badge">{{ usuarioPerfil.rol }}</span>
+      <h2>{{ usuarioPerfil.nombre_completo }}</h2>
+      <p>{{ usuarioPerfil.correo_institucional }}</p>
+      <div class="student-id">
+        <span>Carnet</span>
+        <strong>{{ usuarioPerfil.identificador_carnet }}</strong>
+      </div>
+    </section>
+
+    <div class="section-heading">
+      <h2>Información de cuenta</h2>
+      <span>Datos institucionales</span>
+    </div>
+    <div class="details-card">
+      <div class="detail-row">
+        <span class="detail-icon"><ion-icon name="business-outline"></ion-icon></span>
+        <div>
+          <span class="detail-label">Departamento o carrera</span>
+          <strong>{{ usuarioPerfil.departamento_o_carrera }}</strong>
+        </div>
+      </div>
+      <div class="detail-row">
+        <span class="detail-icon"><ion-icon name="person-outline"></ion-icon></span>
+        <div>
+          <span class="detail-label">Tipo de cuenta</span>
+          <strong>{{ usuarioPerfil.rol }}</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-heading support-heading">
+      <h2>¿Necesitas ayuda?</h2>
+      <span>Estamos para apoyarte</span>
+    </div>
+    <div class="support-card">
+      <p>Comunícate con el equipo de soporte institucional.</p>
+      <a href="mailto:soporte@local.com">
+        <ion-icon name="mail-outline"></ion-icon>
+        soporte@local.com
+      </a>
+      <a href="https://wa.me/50375463693" target="_blank" rel="noopener noreferrer">
+        <ion-icon name="logo-whatsapp"></ion-icon>
+        +503 7546-3693
+      </a>
+    </div>
+  } @else {
+    <div class="profile-loading">No se pudo cargar la información del perfil.</div>
+  }
+
+  @if (authenticated) {
+    <div class="logout-section">
+      <ion-button expand="block" fill="outline" (click)="logout()">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        Cerrar sesión
+      </ion-button>
+    </div>
+  }
+</ion-content>

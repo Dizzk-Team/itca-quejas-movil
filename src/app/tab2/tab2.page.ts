@@ -1,6 +1,6 @@
-import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButton, IonInput } from '@ionic/angular';
-import { IonItem, IonList, IonSelect, IonSelectOption, IonTextarea } from '@ionic/angular';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButton } from '@ionic/angular';
+import { IonItem, IonList, IonSelect, IonSelectOption } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { cameraOutline, arrowForwardOutline, trashOutline } from 'ionicons/icons';
@@ -14,11 +14,11 @@ import { Router } from '@angular/router';
   styleUrls: ['tab2.page.scss'],
   imports: [
     IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonList,
-    IonSelect, IonSelectOption, CommonModule, IonTextarea,
-    FormsModule, IonIcon, IonButton, IonInput
+    IonSelect, IonSelectOption, CommonModule,
+    FormsModule, IonIcon, IonButton
   ]
 })
-export class Tab2Page implements OnInit {
+export class Tab2Page {
   private readonly api = inject(QuejasApiService);
   private readonly router = inject(Router);
   private readonly changeDetector = inject(ChangeDetectorRef);
@@ -38,8 +38,6 @@ export class Tab2Page implements OnInit {
   constructor() {
     addIcons({ cameraOutline, arrowForwardOutline, trashOutline });
   }
-
-  ngOnInit(): void {}
 
   ionViewWillEnter(): void {
     if (!this.api.isAuthenticated) {

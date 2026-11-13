@@ -76,6 +76,15 @@
       </p>
     </div>
 
+    <div class="assigned-agent" [class.unassigned]="!reporte.encargado?.nombre_completo">
+      <ion-icon name="person-outline"></ion-icon>
+      <span>
+        {{ reporte.encargado?.nombre_completo
+          ? 'Atiende: ' + reporte.encargado.nombre_completo
+          : 'Pendiente de asignación' }}
+      </span>
+    </div>
+
     <div *ngIf="reporte.evidencias_url?.[0] as imagen" class="card-main-image">
       <img [src]="imagen" alt="Evidencia del reporte" />
     </div>

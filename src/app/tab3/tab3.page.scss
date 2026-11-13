@@ -1,6 +1,8 @@
 /* Fondo general de la página */
 .page-container {
-  --background: #f8fafc;
+  --background:
+    radial-gradient(ellipse at 90% 0, rgba(211, 166, 79, 0.12), transparent 28%),
+    #f5f6fa;
 }
 
 /* 1. Cabecera de la sección */
@@ -12,7 +14,7 @@
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.8px;
-    color: #d11414; /* Color primario o azul institucional */
+    color: var(--app-primary);
     margin: 0 0 4px 0;
     text-transform: uppercase;
   }
@@ -20,14 +22,14 @@
   h1 {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #1e293b; /* Tono oscuro elegante */
+    color: var(--app-ink);
     margin: 0 0 6px 0;
     line-height: 1.2;
   }
 
   .subtitle {
     font-size: 0.9rem;
-    color: #64748b; /* Gris medio para el subtítulo */
+    color: var(--app-muted);
     margin: 0;
   }
 }
@@ -37,14 +39,14 @@
   margin-bottom: 12px;
 
   h6 {
-    color: #000000; /* Color primario */
+    color: var(--app-ink);
     margin: 0 0 4px 0;
   }
 }
 
 .feed-message {
   margin: 24px 8px;
-  color: #64748b;
+  color: var(--app-muted);
   text-align: center;
 
   p {
@@ -59,7 +61,7 @@
 .counter-text {
   font-size: 0.9rem;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--app-ink);
   margin: 0;
 }
 
@@ -73,7 +75,7 @@
   ion-select {
     font-size: 0.85rem;
     font-weight: 600;
-    color: #3880ff;
+    color: var(--app-primary);
     padding: 0;
   }
 }
@@ -81,10 +83,10 @@
 /* Estilo general de la Tarjeta del Muro */
 .community-card {
   margin: 0 0 16px 0;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
+  border-radius: 19px;
+  box-shadow: 0 12px 30px rgba(24, 32, 51, 0.055);
   background: #ffffff;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--app-border);
   padding: 16px;
 }
 
@@ -104,8 +106,8 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background-color: #dbeafe;
-      color: #1d4ed8;
+      background-color: #f9e9ed;
+      color: var(--app-primary);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -117,7 +119,7 @@
       h3 {
         font-size: 0.9rem;
         font-weight: 700;
-        color: #1e293b;
+        color: var(--app-ink);
         margin: 0;
       }
       p {
@@ -131,7 +133,7 @@
   .category-tag {
     font-size: 0.75rem;
     font-weight: 600;
-    color: #64748b;
+    color: var(--app-muted);
     background: #f1f5f9;
     padding: 4px 8px;
     border-radius: 6px;
@@ -145,13 +147,13 @@
   h2 {
     font-size: 1.05rem;
     font-weight: 700;
-    color: #1e293b;
+    color: var(--app-ink);
     margin: 0 0 4px 0;
   }
 
   .location-text {
     font-size: 0.8rem;
-    color: #64748b;
+    color: var(--app-muted);
     margin: 0;
     display: flex;
     align-items: center;
@@ -159,8 +161,32 @@
 
     ion-icon {
       font-size: 0.9rem;
-      color: #94a3b8;
+      color: #9aa2b1;
     }
+  }
+}
+
+.assigned-agent {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 12px;
+  padding: 9px 11px;
+  border-radius: 12px;
+  background: #edf7f1;
+  color: #26734d;
+  font-size: 0.78rem;
+  font-weight: 650;
+
+  ion-icon {
+    flex: 0 0 auto;
+    font-size: 1rem;
+  }
+
+  &.unassigned {
+    background: #f3f4f7;
+    color: var(--app-muted);
+    font-weight: 550;
   }
 }
 
@@ -195,15 +221,15 @@
 
     ion-icon {
       font-size: 1rem;
-      color: #3880ff;
+      color: var(--app-primary);
     }
   }
 
   .confirm-btn {
-    --background: #eff6ff;
-    --color: #1d4ed8;
+    --background: #f9e9ed;
+    --color: var(--app-primary);
     --border-radius: 12px;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.9rem;
     text-transform: none;
     box-shadow: none;

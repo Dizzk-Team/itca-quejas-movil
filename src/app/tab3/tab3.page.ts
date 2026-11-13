@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
@@ -23,6 +23,7 @@ import {
   arrowUpCircleOutline,
   checkmarkCircleOutline,
   locationSharp,
+  personOutline,
   peopleOutline,
 } from 'ionicons/icons';
 import { Router } from '@angular/router';
@@ -55,6 +56,7 @@ import { ApiError, QuejasApiService, Reporte } from '../Services/quejas-api.serv
 export class Tab3Page {
   private readonly api = inject(QuejasApiService);
   private readonly router = inject(Router);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   filtroMuro = 'recientes';
   reportes: Reporte[] = [];
@@ -67,6 +69,7 @@ export class Tab3Page {
   constructor() {
     addIcons({
       locationSharp,
+      personOutline,
       peopleOutline,
       arrowUpCircleOutline,
       checkmarkCircleOutline,
@@ -80,6 +83,7 @@ export class Tab3Page {
   async loadReportes(): Promise<void> {
     this.loading = true;
     this.error = '';
+    this.cdr.markForCheck();
 
     try {
       this.reportes = await this.api.list();
@@ -88,6 +92,8 @@ export class Tab3Page {
       this.error = 'No se pudieron cargar los reportes. Revisa tu conexión e inténtalo de nuevo.';
     } finally {
       this.loading = false;
+      // La app corre sin zone.js: hay que avisar a Angular que redibuje.
+      this.cdr.markForCheck();
     }
   }
 
@@ -152,6 +158,7 @@ export class Tab3Page {
       const confirmingIds = new Set(this.confirmingIds);
       confirmingIds.delete(reportId);
       this.confirmingIds = confirmingIds;
+      this.cdr.markForCheck();
     }
   }
 
@@ -170,7 +177,7 @@ export class Tab3Page {
   }
 
   getNombreCreador(reporte: Reporte): string {
-    return reporte.creador?.nombre_completo || 'Usuario de la comunidad';
+    return reporte.creador?.nombre_completo || reporte.creador_nombre || 'Usuario de la comunidad';
   }
 
   getIniciales(reporte: Reporte): string {
