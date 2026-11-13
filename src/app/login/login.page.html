@@ -9,15 +9,11 @@
             onerror="this.src = 'assets/shapes.svg'"
           />
         </div>
-        <span class="brand-kicker">MANTENIMIENTO INSTITUCIONAL</span>
         <h2>ITCA FEPADE</h2>
-        <p>Un campus mejor empieza con tu reporte.</p>
       </div>
 
       <div class="login-body">
-        <span class="form-eyebrow">BIENVENIDO DE NUEVO</span>
         <h3 class="form-title">Iniciar sesión</h3>
-        <p class="form-description">Ingresa con tu correo institucional para continuar.</p>
 
         @if (authenticated) {
         <div class="auth-message">
@@ -29,26 +25,22 @@
         } @else {
         <form (ngSubmit)="login()">
           <div class="input-group">
-            <label for="correo-institucional">Correo institucional</label>
             <input
-              id="correo-institucional"
               type="email"
               name="correo_institucional"
               [(ngModel)]="correo_institucional"
-              placeholder="nombre@itca.edu.sv"
+              placeholder="Correo electrónico"
               [disabled]="loading"
               required
             />
           </div>
 
           <div class="input-group">
-            <label for="contrasena">Contraseña</label>
             <input
-              id="contrasena"
               type="password"
               name="password"
               [(ngModel)]="password"
-              placeholder="Tu contraseña"
+              placeholder="Contraseña"
               [disabled]="loading"
               required
             />

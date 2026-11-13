@@ -2,20 +2,24 @@ import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuejasApiService, Usuario } from '../Services/quejas-api.service';
 import {
+  IonAvatar,
   IonButton,
   IonContent,
   IonHeader,
   IonIcon,
+  IonItem,
+  IonLabel,
+  IonList,
   IonTitle,
   IonToolbar,
+  IonAccordion,
+  IonAccordionGroup,
 } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import {
   businessOutline,
-  logOutOutline,
   logoWhatsapp,
   mailOutline,
-  personCircleOutline,
   personOutline,
 } from 'ionicons/icons';
 @Component({
@@ -27,20 +31,21 @@ import {
     IonHeader,
     IonToolbar,
     IonTitle,
+    IonAvatar,
     IonIcon,
+    IonList,
+    IonItem,
+    IonLabel,
     IonButton,
+    IonAccordion,
+    IonAccordionGroup,
+    IonIcon,
   ],
 })
 export class PerfilPage {
   constructor() {
-    addIcons({
-      mailOutline,
-      logoWhatsapp,
-      personOutline,
-      personCircleOutline,
-      businessOutline,
-      logOutOutline,
-    });
+    // Registras el icono para poder usarlo en tu HTML
+    addIcons({ mailOutline, logoWhatsapp, personOutline, businessOutline });
   }
   private api = inject(QuejasApiService);
   private router = inject(Router);

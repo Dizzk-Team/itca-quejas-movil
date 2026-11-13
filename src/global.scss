@@ -25,72 +25,13 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-:root {
-  color-scheme: light;
-  --ion-font-family: Inter, "Segoe UI", Roboto, sans-serif;
-  --ion-background-color: #f5f6fa;
-  --ion-text-color: #172033;
-  --ion-color-primary: #a51d3d;
-  --ion-color-primary-rgb: 165, 29, 61;
-  --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #911a36;
-  --ion-color-primary-tint: #ae3451;
-  --ion-color-secondary: #d3a64f;
-  --ion-color-secondary-rgb: 211, 166, 79;
-  --ion-color-secondary-contrast: #172033;
-  --ion-color-secondary-contrast-rgb: 23, 32, 51;
-  --ion-color-secondary-shade: #ba9246;
-  --ion-color-secondary-tint: #d7af62;
-  --ion-color-light: #f5f6fa;
-  --ion-color-light-rgb: 245, 246, 250;
-  --ion-color-light-contrast: #172033;
-  --ion-color-light-contrast-rgb: 23, 32, 51;
-  --ion-color-medium: #737d90;
-  --ion-color-medium-rgb: 115, 125, 144;
-  --ion-color-medium-contrast: #ffffff;
-  --ion-color-medium-contrast-rgb: 255, 255, 255;
-  --ion-color-dark: #172033;
-  --ion-color-dark-rgb: 23, 32, 51;
-  --ion-color-dark-contrast: #ffffff;
-  --ion-color-dark-contrast-rgb: 255, 255, 255;
-}
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
 
-html,
-body,
-ion-app {
-  background: #f5f6fa;
-  color: #172033;
-  font-family: var(--ion-font-family);
-}
-
-ion-header {
-  ion-toolbar {
-    --background: rgba(255, 255, 255, 0.94);
-    --color: #172033;
-    --border-color: transparent;
-    --min-height: 60px;
-    backdrop-filter: blur(16px);
-  }
-
-  ion-title {
-    font-size: 1.05rem;
-    font-weight: 750;
-    letter-spacing: -0.02em;
-  }
-}
-
-ion-button {
-  font-weight: 650;
-  letter-spacing: 0;
-  text-transform: none;
-}
-
-ion-content {
-  --background: #f5f6fa;
-}
-
-::selection {
-  color: #ffffff;
-  background: #a51d3d;
-}
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import '@ionic/angular/css/palettes/dark.system.css';

@@ -1,187 +1,157 @@
+/* Fondo general crema/beige suave de la pantalla */
 .login-background {
-  --background:
-    radial-gradient(ellipse at 15% 15%, rgba(211, 166, 79, 0.19), transparent 34%),
-    radial-gradient(ellipse at 90% 85%, rgba(165, 29, 61, 0.13), transparent 38%),
-    #f5f6fa;
+  --background: #f4ecdf; 
 }
 
+/* Contenedor flexible para centrar la tarjeta */
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100%;
-  padding: 28px 20px;
+  padding: 20px;
 }
 
+/* Tarjeta principal contenedora con bordes redondeados y sombra */
 .login-card {
-  background: var(--app-surface);
+  background: #ffffff;
   width: 100%;
   max-width: 440px;
-  border: 1px solid rgba(255, 255, 255, 0.82);
-  border-radius: 28px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 28px 70px rgba(31, 26, 34, 0.14);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* Banner superior rojo/burdeos institucional */
 .login-header-banner {
-  position: relative;
-  isolation: isolate;
-  background: linear-gradient(140deg, #75152f 0%, #a51d3d 58%, #bd3852 100%);
-  padding: 34px 24px 32px;
+  background-color: #990000; 
+  padding: 30px 20px;
   text-align: center;
   color: #ffffff;
-
-  &::after {
-    position: absolute;
-    z-index: -1;
-    right: -44px;
-    bottom: -90px;
-    width: 220px;
-    height: 220px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 50%;
-    box-shadow: 0 0 0 24px rgba(255, 255, 255, 0.035), 0 0 0 48px rgba(255, 255, 255, 0.025);
-    content: "";
-  }
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 
   .logo-box {
     background: #ffffff;
-    width: 132px;
-    height: 58px;
-    margin: 0 auto 18px;
-    border-radius: 15px;
+    width: 120px;
+    height: 50px;
+    margin: 0 auto 15px auto;
+    border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 10px 24px rgba(48, 7, 20, 0.18);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 
     img {
-      max-width: 110px;
-      max-height: 42px;
+      max-height: 35px;
       object-fit: contain;
     }
   }
 
-  .brand-kicker {
-    color: #f1d89e;
-    font-size: 0.65rem;
-    font-weight: 750;
-    letter-spacing: 0.16em;
-  }
-
   h2 {
-    margin: 8px 0 0;
-    font-size: 1.45rem;
-    font-weight: 800;
-    letter-spacing: 0.015em;
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
   }
 
   p {
-    margin: 7px 0 0;
-    color: rgba(255, 255, 255, 0.78);
-    font-size: 0.88rem;
+    margin: 5px 0 0 0;
+    font-size: 13px;
+    color: #f0f0f0;
   }
 }
 
+/* Cuerpo interior del formulario */
 .login-body {
-  padding: 30px clamp(22px, 7vw, 38px) 34px;
-
-  .form-eyebrow {
-    display: block;
-    color: var(--app-primary);
-    font-size: 0.67rem;
-    font-weight: 800;
-    letter-spacing: 0.14em;
-    text-align: center;
-  }
+  padding: 30px 35px;
 
   .form-title {
     text-align: center;
-    color: var(--app-ink);
-    font-size: 1.45rem;
-    font-weight: 780;
-    letter-spacing: -0.04em;
-    margin: 5px 0 4px;
-  }
-
-  .form-description {
-    color: var(--app-muted);
-    font-size: 0.86rem;
-    line-height: 1.5;
-    text-align: center;
-    margin: 0 0 22px;
+    color: #990000;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 25px;
   }
 }
 
+/* Estilos de los inputs */
 .input-group {
-  margin-bottom: 16px;
+  position: relative;
+  margin-bottom: 18px;
 
-  label {
-    display: block;
-    color: #354056;
-    font-size: 0.78rem;
-    font-weight: 700;
-    margin-bottom: 7px;
+  .input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    opacity: 0.6;
+  }
+
+  .eye-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 16px;
+    opacity: 0.6;
   }
 
   input {
     width: 100%;
-    min-height: 50px;
-    padding: 0 15px;
-    background: #f8f9fc;
-    border: 1px solid #e4e7ef;
-    border-radius: 14px;
-    font: inherit;
-    font-size: 0.91rem;
-    color: var(--app-ink);
+    padding: 13px 15px 13px 42px;
+    background-color: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333333;
     outline: none;
-    transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    transition: border-color 0.2s;
 
     &::placeholder {
-      color: #9aa2b1;
+      color: #999999;
     }
 
     &:focus {
-      background: #ffffff;
-      border-color: var(--app-primary);
-      box-shadow: 0 0 0 4px rgba(165, 29, 61, 0.09);
-    }
-
-    &:disabled {
-      opacity: 0.65;
+      border-color: #990000;
     }
   }
 }
 
+/* Mensaje de error */
 .error-text {
-  color: #b4233f;
-  background: #fff0f2;
-  border-radius: 12px;
-  padding: 10px 12px;
-  font-size: 0.82rem;
+  color: #990000;
+  font-size: 13px;
   text-align: center;
-  margin: 0 0 12px;
+  margin-bottom: 12px;
 }
 
+/* Botón de ingresar institucional */
 .btn-submit {
-  --background: var(--app-primary);
-  --background-hover: var(--app-primary-dark);
+  --background: #990000;
+  --background-hover: #800000;
   --color: #ffffff;
-  --border-radius: 14px;
-  height: 50px;
-  margin: 22px 0 0;
-  font-size: 0.94rem;
-  box-shadow: 0 10px 20px rgba(165, 29, 61, 0.22);
+  --border-radius: 6px;
+  font-weight: 600;
+  height: 46px;
+  margin-top: 22px;
+  text-transform: none;
+  font-size: 15px;
+  box-shadow: 0 4px 12px rgba(153, 0, 0, 0.25);
 }
 
+/* Enlace inferior de registro */
 .register-footer {
   text-align: center;
   margin-top: 20px;
-  font-size: 0.8rem;
-  color: var(--app-muted);
+  font-size: 13px;
+  color: #666666;
 
   a {
-    color: var(--app-primary);
+    color: #cca652; /* Tono dorado/amarillo sutil de la referencia */
     text-decoration: none;
     font-weight: 600;
 
@@ -194,7 +164,7 @@
 .auth-message {
   text-align: center;
   p {
-    color: var(--app-muted);
-    margin: 0 0 20px;
+    color: #444444;
+    margin-bottom: 20px;
   }
 }
