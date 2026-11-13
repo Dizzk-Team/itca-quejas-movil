@@ -23,6 +23,7 @@ import {
   arrowUpCircleOutline,
   checkmarkCircleOutline,
   locationSharp,
+  personOutline,
   peopleOutline,
 } from 'ionicons/icons';
 import { Router } from '@angular/router';
@@ -68,6 +69,7 @@ export class Tab3Page {
   constructor() {
     addIcons({
       locationSharp,
+      personOutline,
       peopleOutline,
       arrowUpCircleOutline,
       checkmarkCircleOutline,
@@ -175,7 +177,7 @@ export class Tab3Page {
   }
 
   getNombreCreador(reporte: Reporte): string {
-    return reporte.creador?.nombre_completo || 'Usuario de la comunidad';
+    return reporte.creador?.nombre_completo || reporte.creador_nombre || 'Usuario de la comunidad';
   }
 
   getIniciales(reporte: Reporte): string {

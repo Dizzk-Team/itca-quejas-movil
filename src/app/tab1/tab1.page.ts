@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, DestroyRef, inject } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
@@ -8,20 +8,24 @@ import {
   IonIcon,
   IonButton,
   IonButtons,
+  IonAlert,
 } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import {
   buildOutline,
   checkmarkCircleOutline,
   cameraOutline,
+  createOutline,
   locationSharp,
   logOutOutline,
   peopleOutline,
+  personOutline,
   timeOutline,
+  trashOutline,
 } from 'ionicons/icons';
-import { QuejasApiService, Reporte } from '../Services/quejas-api.service';
+import { ApiError, QuejasApiService, Reporte } from '../Services/quejas-api.service';
 
 type Estado = 'pending' | 'in-process' | 'resolve';
 
@@ -38,6 +42,7 @@ type Estado = 'pending' | 'in-process' | 'resolve';
     IonIcon,
     IonButton,
     IonButtons,
+    IonAlert,
     CommonModule,
   ],
 })
@@ -51,8 +56,25 @@ export class Tab1Page {
   loading = false;
   error = '';
 
+  /** Reporte que espera confirmación para eliminarse. */
+  porEliminar: Reporte | null = null;
+  eliminandoId: string | null = null;
+
+  readonly botonesEliminar = [
+    { text: 'Cancelar', role: 'cancel' },
+    {
+      text: 'Eliminar',
+      role: 'destructive',
+      handler: () => {
+        if (this.porEliminar) void this.eliminar(this.porEliminar);
+      },
+    },
+  ];
+
   constructor() {
     addIcons({
+      createOutline,
+      trashOutline,
       timeOutline,
       buildOutline,
       checkmarkCircleOutline,
@@ -60,11 +82,17 @@ export class Tab1Page {
       locationSharp,
       logOutOutline,
       peopleOutline,
+      personOutline,
     });
-  }
 
-  ionViewWillEnter(): void {
-    void this.loadMisReportes();
+    // Recargar cada vez que se llega a Inicio. ionViewWillEnter no se dispara
+    // al volver desde páginas fuera de las pestañas (login, editar reporte).
+    const sub = this.router.events.subscribe((e) => {
+      if (e instanceof NavigationEnd && e.urlAfterRedirects.startsWith('/tabs/tab1')) {
+        void this.loadMisReportes();
+      }
+    });
+    inject(DestroyRef).onDestroy(() => sub.unsubscribe());
   }
 
   async loadMisReportes(): Promise<void> {
@@ -117,6 +145,39 @@ export class Tab1Page {
       'in-process': 'build-outline',
       resolve: 'checkmark-circle-outline',
     }[this.getEstado(reporte)];
+  }
+
+  editar(reporte: Reporte): void {
+    if (reporte.id) void this.router.navigate(['/editar-reporte', reporte.id]);
+  }
+
+  pedirEliminar(reporte: Reporte): void {
+    this.porEliminar = reporte;
+  }
+
+  async eliminar(reporte: Reporte): Promise<void> {
+    if (!reporte.id || this.eliminandoId) return;
+
+    this.eliminandoId = reporte.id;
+    this.error = '';
+    this.cdr.markForCheck();
+
+    try {
+      await this.api.delete(reporte.id);
+      this.reportes = this.reportes.filter((r) => r.id !== reporte.id);
+    } catch (error) {
+      console.error('Error al eliminar el reporte.', error);
+      if (error instanceof ApiError && error.status === 401) {
+        await this.router.navigateByUrl('/login');
+        return;
+      }
+      this.error = error instanceof ApiError
+        ? error.message
+        : 'No se pudo eliminar el reporte. Inténtalo de nuevo.';
+    } finally {
+      this.eliminandoId = null;
+      this.cdr.markForCheck();
+    }
   }
 
   contar(estado: Estado): number {

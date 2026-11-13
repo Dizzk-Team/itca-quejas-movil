@@ -1,6 +1,8 @@
 /* Fondo general de la página */
 .page-container {
-  --background: #f8fafc;
+  --background:
+    radial-gradient(ellipse at 92% 0, rgba(211, 166, 79, 0.12), transparent 28%),
+    #f5f6fa;
 }
 
 /* Saludo */
@@ -14,8 +16,8 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #fde8e8;
-    color: #cb1717;
+    background: #f9e9ed;
+    color: var(--app-primary);
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -25,7 +27,7 @@
   .hello-text {
     display: flex;
     flex-direction: column;
-    color: #1e293b;
+    color: var(--app-ink);
 
     strong {
       font-size: 1rem;
@@ -33,7 +35,7 @@
 
     span {
       font-size: 0.8rem;
-      color: #64748b;
+      color: var(--app-muted);
     }
   }
 }
@@ -46,7 +48,7 @@
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.8px;
-    color: #cb1717;
+    color: var(--app-primary);
     margin: 0 0 4px 0;
     text-transform: uppercase;
   }
@@ -54,7 +56,7 @@
   h1 {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #1e293b;
+    color: var(--app-ink);
     margin: 0;
     line-height: 1.2;
   }
@@ -68,8 +70,8 @@
 
   .sum {
     flex: 1;
-    border-radius: 14px;
-    padding: 10px 6px;
+    border-radius: 16px;
+    padding: 12px 6px;
     text-align: center;
 
     b {
@@ -109,12 +111,12 @@
 
   strong {
     font-size: 0.95rem;
-    color: #1e293b;
+    color: var(--app-ink);
   }
 
   span {
     font-size: 0.82rem;
-    color: #64748b;
+    color: var(--app-muted);
   }
 }
 
@@ -132,13 +134,11 @@
 /* Tarjeta */
 .report-card {
   margin: 0 0 14px 0;
-  border-radius: 16px;
-  box-shadow:
-    0 10px 25px -5px rgba(0, 0, 0, 0.05),
-    0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  border-radius: 19px;
+  box-shadow: 0 12px 30px rgba(24, 32, 51, 0.055);
   background: #ffffff;
-  border: 1px solid #e2e8f0;
-  padding: 12px;
+  border: 1px solid var(--app-border);
+  padding: 13px;
 }
 
 .card-body-flex {
@@ -153,7 +153,7 @@
   height: 84px;
   border-radius: 12px;
   overflow: hidden;
-  background: #e2e8f0;
+  background: #f0f1f5;
 
   img {
     width: 100%;
@@ -167,7 +167,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #94a3b8;
+    color: #a3aab7;
     font-size: 1.8rem;
   }
 }
@@ -178,6 +178,30 @@
   gap: 3px;
   flex: 1;
   min-width: 0;
+}
+
+.assigned-agent {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 11px;
+  padding: 9px 11px;
+  border-radius: 12px;
+  background: #edf7f1;
+  color: #26734d;
+  font-size: 0.78rem;
+  font-weight: 650;
+
+  ion-icon {
+    flex: 0 0 auto;
+    font-size: 1rem;
+  }
+
+  &.unassigned {
+    background: #f3f4f7;
+    color: var(--app-muted);
+    font-weight: 550;
+  }
 }
 
 .top-line,
@@ -192,7 +216,7 @@
   font-size: 0.68rem;
   font-weight: 700;
   background: #f1f5f9;
-  color: #64748b;
+  color: var(--app-muted);
   padding: 3px 9px;
   border-radius: 12px;
 }
@@ -200,7 +224,7 @@
 .report-title {
   font-size: 0.98rem;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--app-ink);
   margin: 0;
   line-height: 1.2;
   overflow: hidden;
@@ -212,7 +236,7 @@
 
 .report-location {
   font-size: 0.8rem;
-  color: #64748b;
+  color: var(--app-muted);
   margin: 0;
   display: flex;
   align-items: center;
@@ -253,12 +277,31 @@
   }
 
   &.resolve {
-    background-color: #6bf35c96;
-    color: #145701;
+    background-color: #e3f6eb;
+    color: #18734a;
   }
 
   &.in-process {
-    background-color: #0529f71f;
-    color: #1651c0;
+    background-color: #e9edf8;
+    color: #465f9d;
+  }
+}
+
+/* Acciones de la tarjeta (editar / eliminar) */
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid #eef0f4;
+
+  ion-button {
+    --padding-start: 8px;
+    --padding-end: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: none;
+    margin: 0;
   }
 }
