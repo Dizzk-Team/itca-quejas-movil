@@ -52,6 +52,9 @@ export class PerfilPage {
   usuarioPerfil: Usuario | null = null; //Se declara para amacenear el usuario actual con sesion iniciada
   cargando: boolean = true;
 
+  abrirEdicion() {
+    this.router.navigate(['/editar-perfil']); // Ajusta la ruta si la creaste dentro de un tab específico
+  }
   get authenticated(): boolean {
     return this.api.isAuthenticated;
   }

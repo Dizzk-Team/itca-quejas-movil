@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Nuevo Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="ion-padding-bottom ion-text-center">
+    <h2>Crear Cuenta</h2>
+    <p>Ingresa los datos para registrar un nuevo perfil en el sistema.</p>
+  </div>
+
+  <ion-list>
+    <!-- Correo -->
+    <ion-item>
+      <ion-input
+        name="correo"
+        label="Correo Institucional"
+        labelPlacement="floating"
+        [(ngModel)]="registroData.correo_institucional"
+        type="email"
+        placeholder="ejemplo@itca.edu.sv"
+      >
+      </ion-input>
+    </ion-item>
+    <!-- Contraseña -->
+    <ion-item>
+      <ion-input
+        name="password"
+        label="Contraseña"
+        labelPlacement="floating"
+        [(ngModel)]="registroData.password"
+        type="password"
+      >
+      </ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button
+    expand="block"
+    class="ion-margin-top"
+    (click)="guardarUsuario()"
+    [disabled]="cargando"
+  >
+    {{ cargando ? 'Guardando...' : 'Registrar Usuario' }}
+  </ion-button>
+</ion-content>

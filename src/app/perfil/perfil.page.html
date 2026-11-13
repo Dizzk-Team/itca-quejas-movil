@@ -1,28 +1,31 @@
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">perfil</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">perfil</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Mi Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding profile-page">
-  <div class="profile-intro">
-    <span class="eyebrow">TU CUENTA</span>
-    <h1>Tu perfil</h1>
-    <p>Administra tu información y encuentra ayuda cuando la necesites.</p>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <!-- Cabecera del perfil con avatar e información -->
+  @if (usuarioPerfil) {
+  <div class="profile-header">
+    <ion-avatar class="avatar-large">
+      <ion-icon name="person-circle-outline"></ion-icon>
+    </ion-avatar>
+    <h2>{{usuarioPerfil.nombre_completo}}</h2>
+
+    <p><strong>{{usuarioPerfil.identificador_carnet}}</strong></p>
+    <p>{{ usuarioPerfil.correo_institucional}}</p>
+
+    <ion-button
+      fill="outline"
+      shape="round"
+      size="small"
+      class="ion-margin-top"
+      (click)="abrirEdicion()"
+    >
+      <ion-icon slot="start" name="create-outline"></ion-icon>
+      Editar Nombre
+    </ion-button>
   </div>
 
   @if (cargando) {

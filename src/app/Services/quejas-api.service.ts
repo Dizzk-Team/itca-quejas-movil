@@ -126,6 +126,32 @@ export class QuejasApiService {
     return response.data;
   }
 
+  async registrarUsuario(datosUsuario: any): Promise<Usuario> {
+    const response = await this.request<{
+      status: string;
+      message: string;
+      user: Usuario;
+    }>('/register', 'POST', datosUsuario);
+
+    // Retornamos solo el objeto del usuario creado
+    return response.user;
+  }
+
+  async actualizarPerfil(datosActualizados: any): Promise<any> {
+    // Usamos el método 'request' que ya tienes configurado para enviar el token automáticamente
+    const response = await this.request<{
+      status: string;
+      message: string;
+      user: any;
+    }>(
+      '/perfil/actualizar',
+      'PUT', // Asegúrate de que coincida con el verbo HTTP en tu archivo api.php de Laravel
+      datosActualizados,
+    );
+
+    // Retornamos el usuario actualizado que devuelve Laravel
+    return response.user;
+  }
   async confirm(reportId: string, userId: string): Promise<Reporte> {
     const response = await this.request<ApiResponse<Reporte>>(
       `/reportes/${encodeURIComponent(reportId)}/confirmar`,

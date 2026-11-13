@@ -12,5 +12,13 @@ export const routes: Routes = [
     path: 'perfil',
     loadComponent: () => import('./perfil/perfil.page').then( m => m.PerfilPage)
   },
+  {
+    path: 'register',
+    loadComponent: () => import('./register/register.page').then( m => m.RegisterPage)
+  },
+  {
+    path: 'editar-perfil',
+    loadComponent: () => import('./editar-perfil/editar-perfil.page').then( m => m.EditarPerfilPage)
+  },
 
 ];
