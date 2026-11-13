@@ -1,0 +1,75 @@
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">perfil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content>
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">perfil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Mi Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <!-- Cabecera del perfil con avatar e información -->
+  @if (usuarioPerfil) {
+  <div class="profile-header">
+    <ion-avatar class="avatar-large">
+      <ion-icon name="person-circle-outline"></ion-icon>
+    </ion-avatar>
+    <h2>{{usuarioPerfil.nombre_completo}}</h2>
+
+    <p><strong>{{usuarioPerfil.identificador_carnet}}</strong></p>
+    <p>{{ usuarioPerfil.correo_institucional}}</p>
+  </div>
+
+  <!-- Opciones adicionales (Opcional, pero da un aspecto más completo) -->
+  <ion-accordion-group>
+    <ion-accordion value="first">
+      <ion-item slot="header" color="light">
+        <ion-label>Mas información</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <p>
+          <ion-icon name="person-outline"></ion-icon>
+          Rol: {{ usuarioPerfil.rol}}
+        </p>
+        <p>
+          <ion-icon name="business-outline"></ion-icon>
+          Depto: {{ usuarioPerfil.departamento_o_carrera}}
+        </p>
+      </div>
+    </ion-accordion>
+    <ion-accordion value="second">
+      <ion-item slot="header" color="light">
+        <ion-label>Soporte Técnico</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <p>Cualquier inconveniente con la app notifica a:</p>
+        <p>
+          <ion-icon name="mail-outline"></ion-icon>
+          soporte@local.com
+        </p>
+        <p><ion-icon name="logo-whatsapp"></ion-icon> +503 7546-3693</p>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+  }
+  <!-- Botón de Cerrar Sesión -->
+  @if (authenticated) {
+  <div class="logout-section">
+    <ion-button expand="block" color="danger" fill="outline" (click)="logout()">
+      <ion-icon slot="start" name="log-out-outline"></ion-icon>
+      Cerrar sesión
+    </ion-button>
+  </div>
+  }
+</ion-content>

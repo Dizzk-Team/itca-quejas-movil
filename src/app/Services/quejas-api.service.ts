@@ -21,6 +21,16 @@ export interface Reporte {
   confirmaciones_usuarios?: string[];
 }
 
+export interface Usuario {
+  id: string;
+  nombre_completo: string;
+  correo_institucional: string;
+  identificador_carnet: string;
+  rol: string;
+  departamento_o_carrera: string;
+  estado_cuenta: boolean;
+}
+
 export type Quejas = Reporte;
 
 interface ApiResponse<T> {
@@ -55,11 +65,7 @@ export class QuejasApiService {
     const result = await this.request<{
       access_token: string;
       creador_id: string;
-    }>(
-      '/login',
-      'POST',
-      { correo_institucional, password },
-    );
+    }>('/login', 'POST', { correo_institucional, password });
     if (!result?.access_token || !result.creador_id) {
       throw new Error('La API no devolvió los datos de autenticación.');
     }
@@ -73,7 +79,10 @@ export class QuejasApiService {
   }
 
   async list(): Promise<Reporte[]> {
-    const response = await this.request<ApiResponse<Reporte[]>>('/reportes', 'GET');
+    const response = await this.request<ApiResponse<Reporte[]>>(
+      '/reportes',
+      'GET',
+    );
     if (!Array.isArray(response.data)) {
       throw new Error('La API devolvió una lista de reportes inválida.');
     }
@@ -81,7 +90,19 @@ export class QuejasApiService {
     return response.data;
   }
 
-  async create(creador_id: string, categoria: string, ubicacion_exacta: string, descripcion: string, imagenObj?: File | Blob): Promise<Reporte> {
+  // Obtiene los datos de la interfaz de usuario y los devuelve a perfil
+  obtenerPerfilUsuario(): Promise<Usuario> {
+    // Nota: Reemplaza '/perfil' si tu backend usa otra ruta (ej. '/me' o '/usuario/actual')
+    return this.request<Usuario>('/perfil', 'GET');
+  }
+
+  async create(
+    creador_id: string,
+    categoria: string,
+    ubicacion_exacta: string,
+    descripcion: string,
+    imagenObj?: File | Blob,
+  ): Promise<Reporte> {
     const formData = new FormData();
     formData.append('creador_id', creador_id);
     formData.append('categoria', categoria);
@@ -92,7 +113,11 @@ export class QuejasApiService {
       formData.append('imagen', imagenObj);
     }
 
-    const response = await this.request<ApiResponse<Reporte>>('/reportes', 'POST', formData);
+    const response = await this.request<ApiResponse<Reporte>>(
+      '/reportes',
+      'POST',
+      formData,
+    );
     return response.data;
   }
 
@@ -123,12 +148,14 @@ export class QuejasApiService {
           ? { Authorization: `Bearer ${token}` }
           : {}),
       },
-      ...(body ? { body: isFormData ? body as FormData : JSON.stringify(body) } : {}),
+      ...(body
+        ? { body: isFormData ? (body as FormData) : JSON.stringify(body) }
+        : {}),
     });
 
     if (!response.ok) {
       if (response.status === 401 && path !== '/login') this.logout();
-      const errorBody = await response.json() as {
+      const errorBody = (await response.json()) as {
         message?: string;
         errors?: Record<string, string[]>;
       };
