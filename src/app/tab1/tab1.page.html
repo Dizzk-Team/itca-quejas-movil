@@ -87,6 +87,15 @@
       </div>
     </div>
 
+    <div class="assigned-agent" [class.unassigned]="!reporte.encargado?.nombre_completo">
+      <ion-icon name="person-outline"></ion-icon>
+      <span>
+        {{ reporte.encargado?.nombre_completo
+          ? 'Asignado a: ' + reporte.encargado.nombre_completo
+          : 'Pendiente de asignación' }}
+      </span>
+    </div>
+
     <!-- Acciones: solo se puede editar o eliminar mientras siga pendiente -->
     <div class="card-actions" *ngIf="getEstado(reporte) === 'pending'">
       <ion-button fill="clear" size="small" (click)="editar(reporte)">

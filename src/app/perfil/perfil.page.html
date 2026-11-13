@@ -18,58 +18,75 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  <!-- Cabecera del perfil con avatar e información -->
-  @if (usuarioPerfil) {
-  <div class="profile-header">
-    <ion-avatar class="avatar-large">
-      <ion-icon name="person-circle-outline"></ion-icon>
-    </ion-avatar>
-    <h2>{{usuarioPerfil.nombre_completo}}</h2>
-
-    <p><strong>{{usuarioPerfil.identificador_carnet}}</strong></p>
-    <p>{{ usuarioPerfil.correo_institucional}}</p>
+<ion-content [fullscreen]="true" class="ion-padding profile-page">
+  <div class="profile-intro">
+    <span class="eyebrow">TU CUENTA</span>
+    <h1>Tu perfil</h1>
+    <p>Administra tu información y encuentra ayuda cuando la necesites.</p>
   </div>
 
-  <!-- Opciones adicionales (Opcional, pero da un aspecto más completo) -->
-  <ion-accordion-group>
-    <ion-accordion value="first">
-      <ion-item slot="header" color="light">
-        <ion-label>Mas información</ion-label>
-      </ion-item>
-      <div class="ion-padding" slot="content">
-        <p>
-          <ion-icon name="person-outline"></ion-icon>
-          Rol: {{ usuarioPerfil.rol}}
-        </p>
-        <p>
-          <ion-icon name="business-outline"></ion-icon>
-          Depto: {{ usuarioPerfil.departamento_o_carrera}}
-        </p>
+  @if (cargando) {
+    <div class="profile-loading" role="status">Cargando tu perfil...</div>
+  } @else if (usuarioPerfil) {
+    <section class="profile-hero">
+      <div class="avatar-large">
+        <ion-icon name="person-circle-outline"></ion-icon>
       </div>
-    </ion-accordion>
-    <ion-accordion value="second">
-      <ion-item slot="header" color="light">
-        <ion-label>Soporte Técnico</ion-label>
-      </ion-item>
-      <div class="ion-padding" slot="content">
-        <p>Cualquier inconveniente con la app notifica a:</p>
-        <p>
-          <ion-icon name="mail-outline"></ion-icon>
-          soporte@local.com
-        </p>
-        <p><ion-icon name="logo-whatsapp"></ion-icon> +503 7546-3693</p>
+      <span class="account-badge">{{ usuarioPerfil.rol }}</span>
+      <h2>{{ usuarioPerfil.nombre_completo }}</h2>
+      <p>{{ usuarioPerfil.correo_institucional }}</p>
+      <div class="student-id">
+        <span>Carnet</span>
+        <strong>{{ usuarioPerfil.identificador_carnet }}</strong>
       </div>
-    </ion-accordion>
-  </ion-accordion-group>
+    </section>
+
+    <div class="section-heading">
+      <h2>Información de cuenta</h2>
+      <span>Datos institucionales</span>
+    </div>
+    <div class="details-card">
+      <div class="detail-row">
+        <span class="detail-icon"><ion-icon name="business-outline"></ion-icon></span>
+        <div>
+          <span class="detail-label">Departamento o carrera</span>
+          <strong>{{ usuarioPerfil.departamento_o_carrera }}</strong>
+        </div>
+      </div>
+      <div class="detail-row">
+        <span class="detail-icon"><ion-icon name="person-outline"></ion-icon></span>
+        <div>
+          <span class="detail-label">Tipo de cuenta</span>
+          <strong>{{ usuarioPerfil.rol }}</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-heading support-heading">
+      <h2>¿Necesitas ayuda?</h2>
+      <span>Estamos para apoyarte</span>
+    </div>
+    <div class="support-card">
+      <p>Comunícate con el equipo de soporte institucional.</p>
+      <a href="mailto:soporte@local.com">
+        <ion-icon name="mail-outline"></ion-icon>
+        soporte@local.com
+      </a>
+      <a href="https://wa.me/50375463693" target="_blank" rel="noopener noreferrer">
+        <ion-icon name="logo-whatsapp"></ion-icon>
+        +503 7546-3693
+      </a>
+    </div>
+  } @else {
+    <div class="profile-loading">No se pudo cargar la información del perfil.</div>
   }
-  <!-- Botón de Cerrar Sesión -->
+
   @if (authenticated) {
-  <div class="logout-section">
-    <ion-button expand="block" color="danger" fill="outline" (click)="logout()">
-      <ion-icon slot="start" name="log-out-outline"></ion-icon>
-      Cerrar sesión
-    </ion-button>
-  </div>
+    <div class="logout-section">
+      <ion-button expand="block" fill="outline" (click)="logout()">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        Cerrar sesión
+      </ion-button>
+    </div>
   }
 </ion-content>

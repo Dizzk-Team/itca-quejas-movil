@@ -7,6 +7,11 @@ export interface Reporte {
   creador?: {
     nombre_completo?: string;
   } | null;
+  creador_nombre?: string | null;
+  encargado?: {
+    nombre_completo?: string;
+    rol?: string;
+  } | null;
   created_at?: string;
   fechas?: {
     reporte?: string;

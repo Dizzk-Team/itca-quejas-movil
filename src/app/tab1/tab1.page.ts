@@ -21,6 +21,7 @@ import {
   locationSharp,
   logOutOutline,
   peopleOutline,
+  personOutline,
   timeOutline,
   trashOutline,
 } from 'ionicons/icons';
@@ -81,6 +82,7 @@ export class Tab1Page {
       locationSharp,
       logOutOutline,
       peopleOutline,
+      personOutline,
     });
 
     // Recargar cada vez que se llega a Inicio. ionViewWillEnter no se dispara
