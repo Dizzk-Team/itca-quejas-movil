@@ -105,6 +105,29 @@ export class QuejasApiService {
     return response.data;
   }
 
+  // La API no tiene GET /reportes/{id}: se busca dentro de la lista.
+  async getById(id: string): Promise<Reporte | undefined> {
+    const reportes = await this.list();
+    return reportes.find((r) => r.id === id);
+  }
+
+  // Solo el creador puede editar o eliminar, y solo si sigue Pendiente.
+  async update(
+    reportId: string,
+    datos: Pick<Reporte, 'categoria' | 'ubicacion_exacta' | 'descripcion'>,
+  ): Promise<Reporte> {
+    const response = await this.request<ApiResponse<Reporte>>(
+      `/reportes/${encodeURIComponent(reportId)}`,
+      'PUT',
+      datos,
+    );
+    return response.data;
+  }
+
+  async delete(reportId: string): Promise<void> {
+    await this.request<unknown>(`/reportes/${encodeURIComponent(reportId)}`, 'DELETE');
+  }
+
   private async request<T>(
     path: string,
     method: string,

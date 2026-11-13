@@ -34,6 +34,13 @@ export const routes: Routes = [
     ],
   },
   {
+    path: 'editar-reporte/:id',
+    loadComponent: () =>
+      import('../editar-reporte/editar-reporte.page').then(
+        (m) => m.EditarReportePage,
+      ),
+  },
+  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full',
