@@ -26,6 +26,52 @@
     }
   }
 
+  .account-badge {
+    display: inline-flex;
+    padding: 5px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.23);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #f5dfad;
+    font-size: 0.68rem;
+    font-weight: 700;
+  }
+
+  h2 {
+    margin: 10px 0 4px;
+    font-size: 1.18rem;
+    font-weight: 750;
+  }
+
+  > p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 0.82rem;
+    overflow-wrap: anywhere;
+  }
+
+  .student-id {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 12px 14px;
+    border-radius: 13px;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 0.78rem;
+
+    span {
+      color: rgba(255, 255, 255, 0.72);
+    }
+  }
+}
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 24px 2px 11px;
+
   h2 {
     margin: 0;
     font-size: 1.5rem;
@@ -33,6 +79,48 @@
     color: var(--ion-text-color, #333);
     letter-spacing: -0.5px;
   }
+
+  .detail-icon {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    place-items: center;
+    border-radius: 12px;
+    background: #fff3f4;
+    color: var(--app-primary);
+
+    ion-icon {
+      font-size: 1.15rem;
+    }
+  }
+
+  div:last-child {
+    display: grid;
+    gap: 3px;
+    min-width: 0;
+  }
+
+  .detail-label {
+    color: var(--app-muted);
+    font-size: 0.7rem;
+  }
+
+  strong {
+    color: var(--app-ink);
+    font-size: 0.83rem;
+    overflow-wrap: anywhere;
+  }
+}
+
+.support-heading {
+  margin-top: 23px;
+}
+
+.support-card {
+  display: grid;
+  gap: 13px;
+  padding: 16px;
 
   p {
     margin: 0.25rem 0 0 0;
