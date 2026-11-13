@@ -86,35 +86,5 @@
         </div>
       </div>
     </div>
-
-    <div class="assigned-agent" [class.unassigned]="!reporte.encargado?.nombre_completo">
-      <ion-icon name="person-outline"></ion-icon>
-      <span>
-        {{ reporte.encargado?.nombre_completo
-          ? 'Asignado a: ' + reporte.encargado.nombre_completo
-          : 'Pendiente de asignación' }}
-      </span>
-    </div>
-
-    <!-- Acciones: solo se puede editar o eliminar mientras siga pendiente -->
-    <div class="card-actions" *ngIf="getEstado(reporte) === 'pending'">
-      <ion-button fill="clear" size="small" (click)="editar(reporte)">
-        <ion-icon name="create-outline" slot="start"></ion-icon>
-        Editar
-      </ion-button>
-      <ion-button fill="clear" size="small" color="danger" [disabled]="eliminandoId === reporte.id" (click)="pedirEliminar(reporte)">
-        <ion-icon name="trash-outline" slot="start"></ion-icon>
-        {{ eliminandoId === reporte.id ? 'Eliminando...' : 'Eliminar' }}
-      </ion-button>
-    </div>
   </ion-card>
-
-  <!-- Confirmación antes de eliminar -->
-  <ion-alert
-    [isOpen]="!!porEliminar"
-    header="¿Eliminar este reporte?"
-    message="Esta acción no se puede deshacer."
-    [buttons]="botonesEliminar"
-    (didDismiss)="porEliminar = null"
-  ></ion-alert>
 </ion-content>
