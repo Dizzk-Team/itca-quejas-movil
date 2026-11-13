@@ -1,0 +1,46 @@
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: -300px;
+  margin-bottom: 2rem;
+
+  .avatar-large {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+    background-color: var(--ion-color-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ion-icon {
+      font-size: 100px;
+      color: var(--ion-color-medium);
+    }
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--ion-text-color);
+  }
+
+  p {
+    margin: 0.5rem 0 0 0;
+    font-size: 1rem;
+    color: var(--ion-color-medium);
+  }
+}
+
+.logout-section {
+  margin-top: 230px;
+  padding: 0 1rem;
+
+  ion-button {
+    --border-width: 2px;
+    font-weight: bold;
+  }
+}
